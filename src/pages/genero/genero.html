@@ -1,0 +1,21 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title align="center">Gêneros</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item *ngFor="let genero of generos" (click)="irParaDestino1(genero)">
+      <h2>{{genero.nome}}</h2>
+      <p>{{genero.genero}}</p>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
