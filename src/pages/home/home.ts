@@ -1,34 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { MovieProvider } from '../../providers/movie/movie';
+import { AdicionaClientePage } from '../adiciona-cliente/adiciona-cliente';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-  providers: [
-    MovieProvider
-  ]
+  templateUrl: 'home.html'
 })
 export class HomePage {
 
-  public lista_filmes = new Array<any>();
-
-  constructor(public navCtrl: NavController,
-    private movieProvider: MovieProvider) {
+  constructor(public navCtrl: NavController) {
 
   }
 
-  ionViewDidLoad() {
-    this.movieProvider.getPopularMovies().subscribe(
-      data => {
-        const response = (data as any);
-        const objeto_retorno = JSON.parse(response._body);
-        this.lista_filmes = objeto_retorno.results;
-        console.log(objeto_retorno);
+  cadastrarCliente (){
+    this.navCtrl.push(AdicionaClientePage);
+    }
 
-      }, error => {
-        console.log(error);
-      }
-    )
-  }
 }

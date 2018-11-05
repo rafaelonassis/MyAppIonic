@@ -6,8 +6,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { MovieProvider } from '../providers/movie/movie';
-import { HttpModule } from '@angular/http';
+import {SQLite}	from '@ionic-native/sqlite';
+import { DatabaseProvider } from '../providers/database/database';
+import { ClienteProvider } from '../providers/cliente/cliente';
+import { AdicionaClientePage } from '../pages/adiciona-cliente/adiciona-cliente';
+import { AdicionaClientePageModule } from '../pages/adiciona-cliente/adiciona-cliente.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,7 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    AdicionaClientePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -28,7 +31,9 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MovieProvider
+    SQLite,
+    DatabaseProvider,
+    ClienteProvider
   ]
 })
 export class AppModule {}
